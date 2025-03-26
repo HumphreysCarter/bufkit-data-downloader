@@ -1,5 +1,6 @@
 import json
 import shutil
+import platform
 import requests
 import argparse
 import subprocess
@@ -123,9 +124,16 @@ class BufkitDataDownloader:
 		# Set remote path from config
 		remote = self.config['data_copy_path']
 
-		# Run scp
+		# Copy files to remote
 		if remote is not None and remote != "":
-			subprocess.run(['scp', '-r', source, remote], check=True)
+
+			# rsync is usually unavailable on windows, so use scp
+			if platform.system() == 'Windows':
+				subprocess.run(['scp', '-r', source, remote], check=True)
+
+			# rsync on Linux
+			else:
+				subprocess.run(['rsync', '-azvh', source, remote, '--delete', '--no-times'], check=True)
 
 
 if __name__ == '__main__':
