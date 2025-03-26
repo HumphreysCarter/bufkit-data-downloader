@@ -111,9 +111,12 @@ class BufkitDataDownloader:
 		# Get the current run time
 		run = self.model_run
 
+		# Get model file name
+		model_filename = self.config['models'][self.model]['name']
+
 		# Build the URL
 		base_url = 'https://mtarchive.geol.iastate.edu/'
-		model_url = f'{run:%Y}/{run:%m}/{run:%d}/bufkit/{run:%H}/{self.model}/{self.model.replace("gfs", "gfs3")}_{site}.buf'
+		model_url = f'{run:%Y}/{run:%m}/{run:%d}/bufkit/{run:%H}/{self.model}/{model_filename}_{site}.buf'
 
 		return base_url + model_url
 
