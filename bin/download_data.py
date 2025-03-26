@@ -2,6 +2,7 @@ import json
 import shutil
 import requests
 import argparse
+import subprocess
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -26,6 +27,9 @@ class BufkitDataDownloader:
 		# Download data for each site
 		for site in self.config['models'][self.model]['sites']:
 			self.download_data(site)
+
+		# Copy data directory
+		self.copy_data()
 
 	def load_config(self):
 		config_file = Path(self.program_path, 'etc', 'config.json')
@@ -111,6 +115,17 @@ class BufkitDataDownloader:
 		model_url = f'{run:%Y}/{run:%m}/{run:%d}/bufkit/{run:%H}/{self.model}/{self.model.replace('gfs', 'gfs3')}_{site}.buf'
 
 		return base_url + model_url
+
+	def copy_data(self):
+		# Get data directory
+		source = Path(self.program_path, 'data').resolve().as_posix() + '/'
+
+		# Set remote path from config
+		remote = self.config['data_copy_path']
+
+		# Run scp
+		if remote is not None and remote != "":
+			subprocess.run(['scp', '-r', source, remote], check=True)
 
 
 if __name__ == '__main__':
