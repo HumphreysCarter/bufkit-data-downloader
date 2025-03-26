@@ -1,6 +1,9 @@
 # Remove data directory
 data/
 
+# Remove testing config
+etc/config.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
