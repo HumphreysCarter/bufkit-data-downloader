@@ -1,5 +1,12 @@
 # BUFKIT Data Downloader
 
+## Install
+```shell
+$ git clone https://github.com/HumphreysCarter/bufkit-data-downloader.git
+$ cd bufkit-data-downloader
+$ cp etc/config.json.example etc/config.json
+```
+
 ## Usage
 ```shell
 $ python bin/download_data.py --model <model> [--archive]
