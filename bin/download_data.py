@@ -112,7 +112,7 @@ class BufkitDataDownloader:
 
 		# Build the URL
 		base_url = 'https://mtarchive.geol.iastate.edu/'
-		model_url = f'{run:%Y}/{run:%m}/{run:%d}/bufkit/{run:%H}/{self.model}/{self.model.replace('gfs', 'gfs3')}_{site}.buf'
+		model_url = f'{run:%Y}/{run:%m}/{run:%d}/bufkit/{run:%H}/{self.model}/{self.model.replace("gfs", "gfs3")}_{site}.buf'
 
 		return base_url + model_url
 
