@@ -73,9 +73,9 @@ class BufkitDataDownloader:
 
 		# Ensure directories exists
 		if not download_folder.exists():
-			download_folder.mkdir()
+			download_folder.mkdir(parents=True)
 		if not archive_folder.exists() and self.archive_data:
-			archive_folder.mkdir()
+			archive_folder.mkdir(parents=True)
 
 		# Build the download URL
 		download_url = self.build_download_url(site)
