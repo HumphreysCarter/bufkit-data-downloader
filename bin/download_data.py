@@ -1,3 +1,14 @@
+# --------------------------------------------------------------------------------
+# This software is in the public domain, furnished "as is", without technical
+# support, and with no warranty, express or implied, as to its usefulness for
+# any purpose.
+#
+# BUFKIT Data Downloader - download_data.py
+# A script to allow for automated downloading of BUFR profile data for BUFKIT.
+#
+# Author:   Carter Humphreys, carter.humphreys@noaa.gov
+# --------------------------------------------------------------------------------
+
 import json
 import shutil
 import platform
