@@ -106,5 +106,6 @@
       }
     }
   },
-  "data_copy_path": ""
+  "data_copy_path": "",
+  "num_days_to_archive": 7
 }
