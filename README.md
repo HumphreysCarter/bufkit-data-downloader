@@ -8,6 +8,8 @@ $ cp etc/config.json.example etc/config.json
 ```
 
 ## Usage
+
+### Downloading Data
 ```shell
 $ python bin/download_data.py --model <model> [--archive]
 ```
@@ -15,6 +17,11 @@ $ python bin/download_data.py --model <model> [--archive]
 * `--model`: Name of the model to download (required)
 
 * `--archive`: Add downloaded model data to archive for dProg/dT (optional)
+
+### Clearing Old Archive Data
+```shell
+$ python bin/clean_archive.py
+```
 
 ## Requirements
 * Python 3.8 or later
@@ -73,7 +80,8 @@ All configuration of the script is handled in `etc/config.json`, below is an exa
       }
     }
   },
-  "data_copy_path": ""
+  "data_copy_path": "",
+  "num_days_to_archive": 7
 }
 ```
 
@@ -82,4 +90,6 @@ The models list should contain the name of each model you will run. For each mod
 * `sites` a list of location identifiers to download data for.
 * `runs` a dictionary with the model run hour in UTC as the key and then the hour in UTC that the model becomes available to download.
 
-The `data_copy_path` is optional and can be left blank. This is to allow for copying the data from the download directory to another directory or server. To enable, just add a directory path or remote path and the data will be copied over either rsync or scp.
+The `data_copy_path` variable is optional and can be left blank. This is to allow for copying the data from the download directory to another directory or server. To enable, add a directory path or remote path and the data will be copied over either rsync or scp.
+
+The `num_days_to_archive` variable sets the number of days for a file to remain in the archive before it is removed. Files can be removed from the archive with the `bin/clean_archive.py` script.
