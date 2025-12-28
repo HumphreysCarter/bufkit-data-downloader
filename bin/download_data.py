@@ -162,15 +162,14 @@ class BufkitDataDownloader:
 
             # rsync on Linux
             else:
-                subprocess.run(['rsync', '-azvh', source, remote, '--delete', '--no-times', '--no-perms'], check=True)
+                subprocess.run(['rsync', '-azvh', source, remote, '--delete'], check=True)
 
 
 if __name__ == '__main__':
     # Add command line arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, required=True, help="Model name to download data for")
-    parser.add_argument('--data-source', required=True, default='iastate', choices=['iastate', 'psu'],
-                        help='Source to download data from')
+    parser.add_argument('--data-source', required=True, choices=['iastate', 'psu'], help='Source to download data from')
     parser.add_argument('--archive', action='store_true', default=False, help='Copy data to data archive')
 
     # Read arguments
