@@ -147,7 +147,7 @@ class BufkitDataDownloader:
 
 			# rsync on Linux
 			else:
-				subprocess.run(['rsync', '-azvh', source, remote, '--delete', '--no-times'], check=True)
+				subprocess.run(['rsync', '-azvh', source, remote, '--delete', '--no-times', '--no-perms'], check=True)
 
 
 if __name__ == '__main__':
