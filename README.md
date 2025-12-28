@@ -11,10 +11,12 @@ $ cp etc/config.json.example etc/config.json
 
 ### Downloading Data
 ```shell
-$ python bin/download_data.py --model <model> [--archive]
+$ python bin/download_data.py --model MODEL --data-source {iastate,psu} [--archive]
 ```
 
 * `--model`: Name of the model to download (required)
+* 
+* `--data-source`: Source to download data from, options are [IA State](https://www.meteor.iastate.edu/~ckarsten/bufkit/data/) or [PSU](https://www.meteo.psu.edu/bufkit/) (required)
 
 * `--archive`: Add downloaded model data to archive for dProg/dT (optional)
 
